@@ -12,7 +12,7 @@ from langchain_core.prompts import ChatPromptTemplate
 llm = ChatOpenAI(
     api_key=OpenAI_API_key,
     model="gpt-3.5-turbo",
-    temperature=0, 
+    temperature=0.8, 
     max_tokens=1000
 )
 
@@ -21,6 +21,13 @@ prompt = ChatPromptTemplate("tell me a joke about {subject}")
 
 # LLM Chain
 chain = prompt | llm
+
+
+st.title("MatTalks")
+
+with st.sidebar:
+    st.title("Chat History")
+
 
 prompt = st.chat_input("Enter the message...")
 

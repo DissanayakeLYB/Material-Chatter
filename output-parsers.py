@@ -27,6 +27,11 @@ prompt = ChatPromptTemplate.from_messages(
 # LLM Chain
 chain = prompt | llm
 
+st.title("MatTalks")
+
+with st.sidebar:
+    st.title("Chat History")
+
 prompt = st.chat_input("Enter the message...")
 
 response = chain.invoke({"input" : prompt})
