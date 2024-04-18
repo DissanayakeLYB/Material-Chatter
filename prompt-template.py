@@ -13,7 +13,7 @@ llm = ChatOpenAI(
     api_key=OpenAI_API_key,
     model="gpt-3.5-turbo",
     temperature=0.8, 
-    max_tokens=1000
+    max_tokens=500
 )
 
 # prompt template
