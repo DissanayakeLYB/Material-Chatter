@@ -1,7 +1,6 @@
 import os
 import streamlit as st
 
-# back end
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 
@@ -15,7 +14,7 @@ llm = ChatOpenAI(
     api_key=OpenAI_API_key,
     model="gpt-3.5-turbo",
     temperature=0, 
-    max_tokens=1000
+    max_tokens=500
     )
 
 # front end
