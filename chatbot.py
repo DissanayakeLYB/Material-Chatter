@@ -26,39 +26,16 @@ chat_history = [
 # prompt template
 prompt = ChatPromptTemplate.from_messages([
         ("system", "You are an expert in Materials Science and Engineering. Answer the questions accordingly."),
-        MessagesPlaceholder(variable_name="chat_history"),
         ("user", "{input}")
 ])
 
 # LLM Chain
 chain = prompt | llm
 
+msg = {
+    "input" : "Hello"
+}
 
-st.title("MatTalks")
+response = chain.invoke(msg)
 
-with st.sidebar:
-    st.title("Chat History")
-
-prompt = st.chat_input("Enter the message...")
-
-
-
-response = chain.invoke({"input" : prompt}, {"chat_history": chat_history})
-
-clear_chat = st.button("Clear Chat")
-
-
-
-if prompt:
-        
-    with st.chat_message("user"):
-        st.write(prompt)
-
-    chat_history.append(HumanMessage(content=prompt))
-
-    with st.chat_message("assistant"):
-        st.write(response.content)
-    
-    chat_history.append(AIMessage(content=response))
-
-
+print(response)
