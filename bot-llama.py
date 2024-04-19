@@ -15,6 +15,9 @@ prompt = st.chat_input("Enter the message... ")
 
 # chat_history = []
 
+with st.sidebar:
+    st.title("Chat History")
+
 if prompt:
 
     with st.chat_message("User"):
