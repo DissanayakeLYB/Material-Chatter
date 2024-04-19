@@ -25,9 +25,6 @@ prompt = st.chat_input("Enter the message...")
 with st.sidebar:
     st.title("Chat History")
 
-
-
-
 if prompt:
 
     llm_response = llm.invoke(prompt)
