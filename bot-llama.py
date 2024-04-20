@@ -12,7 +12,7 @@ api_key = os.getenv("Llama_index_API")
 llm = LlamaAPI(api_key=api_key)
 
 
-st.title("PDFTalk")
+st.title("MatTalk")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -27,22 +27,23 @@ for message in st.session_state.messages:
 # here ":=" will assign the chat input to prompt and also checks if True
 if prompt := st.chat_input("Talk to your PDF..."): 
 
-    # # display response of the assistant
+    # display response of the assistant
     with st.chat_message("user"):
         st.write(prompt)
 
     # add assistant's response to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    response = llm.invoke(prompt)
+    response = llm.complete(prompt)
 
     # display response of the assistant
     with st.chat_message("assistant"):
-        st.write(response.content)
+        st.write(str(response))
 
     # add assistant's response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response.content})
+    st.session_state.messages.append({"role": "assistant", "content": str(response)})
 
 with st.sidebar:
     st.title("Upload a PDF")
     upload_files = st.file_uploader(" ")
+    st.button("Process")
