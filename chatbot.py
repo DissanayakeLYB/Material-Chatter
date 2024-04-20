@@ -52,3 +52,4 @@ if prompt := st.chat_input("Talk to your PDF..."):
 with st.sidebar:
     st.title("Upload a PDF")
     upload_files = st.file_uploader(" ")
+    st.button("Process")
