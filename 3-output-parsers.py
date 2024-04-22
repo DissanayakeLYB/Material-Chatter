@@ -5,7 +5,7 @@ import streamlit as st
 load_dotenv()
 OpenAI_API_key =os.getenv("OpenAI_API")
 
-from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser,CommaSeparatedListOutputParser, JsonOutputParser
 from langchain_core.pydantic_v1 import BaseModel, Field

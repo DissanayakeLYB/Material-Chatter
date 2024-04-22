@@ -1,13 +1,13 @@
 import os
 from dotenv import load_dotenv
 # import streamlit as st
-from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
+from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain_community.vectorstores.faiss import FAISS
 from langchain.chains import create_retrieval_chain
 
