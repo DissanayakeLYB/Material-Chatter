@@ -1,7 +1,8 @@
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.document_loaders import WebBaseLoader
@@ -14,6 +15,10 @@ from langchain.chains import create_retrieval_chain
 from langchain_core.prompts import MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+model = ChatOpenAI()
 
 def get_documents_from_web(url):
     loader = WebBaseLoader(url)
@@ -33,6 +38,7 @@ def create_db(docs):
 
 def create_chain(vectorStore):
     model = ChatOpenAI(
+        api_key=openai_api_key,
         model="gpt-3.5-turbo",
         temperature=0.4
     )
