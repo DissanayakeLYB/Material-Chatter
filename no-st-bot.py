@@ -18,8 +18,6 @@ from langchain.chains.history_aware_retriever import create_history_aware_retrie
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-model = ChatOpenAI()
-
 def get_documents_from_web(url):
     loader = WebBaseLoader(url)
     docs = loader.load()
